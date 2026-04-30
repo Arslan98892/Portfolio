@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Arslan Mehmood — QA Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#162032;
+  --navy-mid:#1e2f48;
+  --navy-light:#243758;
+  --gold:#c49a2a;
+  --gold-light:#e0b440;
+  --cream:#f7f4ee;
+  --offwhite:#fdfcfa;
+  --border-c:rgba(22,32,50,0.1);
+  --text:#162032;
+  --muted:#5a6680;
+  --light-bg:#eff1f5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--offwhite);color:var(--text);line-height:1.65;overflow-x:hidden}
+
+/* NAV */
+nav{background:var(--navy);padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-brand{color:#fff;font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:0.5px}
+.nav-brand span{color:var(--gold-light)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold-light)}
+
+/* HERO */
+.hero{background:var(--navy);padding:6rem 3rem 0;display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:end;min-height:92vh}
+.hero-left{padding-bottom:5rem}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:1.75rem}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:blink 2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
+.eyebrow-text{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5.5vw,4rem);font-weight:700;color:#fff;line-height:1.08;margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero-sub{color:rgba(255,255,255,0.55);font-size:15px;max-width:430px;margin-bottom:2.25rem;font-weight:300;line-height:1.75}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-gold{background:var(--gold);color:#fff;padding:0.75rem 1.75rem;border-radius:5px;font-size:13px;font-weight:500;text-decoration:none;letter-spacing:0.5px;border:none;cursor:pointer;transition:background 0.2s;display:inline-block}
+.btn-gold:hover{background:var(--gold-light)}
+.btn-outline{background:transparent;color:rgba(255,255,255,0.75);padding:0.75rem 1.75rem;border-radius:5px;font-size:13px;font-weight:400;text-decoration:none;letter-spacing:0.5px;border:1px solid rgba(255,255,255,0.2);transition:all 0.2s;display:inline-block}
+.btn-outline:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+.hero-contact-row{display:flex;flex-wrap:wrap;gap:1.5rem}
+.h-contact{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1px;text-decoration:none;transition:color 0.2s}
+.h-contact:hover{color:var(--gold-light)}
+
+/* HERO RIGHT — CARD */
+.hero-right{display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:0}
+.hero-card-stack{display:flex;flex-direction:column;gap:0}
+.hcard{border-top:1px solid rgba(255,255,255,0.07);padding:1.5rem 0;display:grid;grid-template-columns:80px 1fr;gap:1rem;align-items:start}
+.hcard-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);padding-top:3px}
+.hcard-val{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.5}
+.hcard-val strong{color:#fff;display:block;font-weight:500;margin-bottom:2px;font-size:14px}
+
+/* STATS */
+.stats-strip{background:var(--navy-mid);padding:2rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,0.06)}
+.stat-item{text-align:center;padding:0.5rem 1rem;border-right:1px solid rgba(255,255,255,0.07)}
+.stat-item:last-child{border-right:none}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gold-light);display:block}
+.stat-l{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:4px;display:block}
+
+/* SECTIONS */
+section{padding:5rem 3rem}
+.section-header{display:flex;align-items:center;gap:1.25rem;margin-bottom:3rem}
+.section-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;white-space:nowrap}
+.section-rule{flex:1;height:1px;background:var(--border-c)}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--navy)}
+
+/* EXPERTISE GRID */
+.expertise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--border-c);border:1px solid var(--border-c);border-radius:8px;overflow:hidden}
+.exp-card{background:var(--offwhite);padding:2rem 1.5rem;transition:background 0.2s}
+.exp-card:hover{background:var(--cream)}
+.exp-icon{width:38px;height:38px;border-radius:7px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+.exp-icon svg{width:18px;height:18px;fill:none;stroke:var(--gold-light);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.exp-card h3{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:0.5rem;line-height:1.3}
+.exp-card p{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* SKILLS */
+.skills-bg{background:var(--cream)}
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.skill-group h4{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;font-weight:500}
+.skill-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border-c)}
+.skill-row:last-child{border-bottom:none}
+.skill-name{font-size:13px;color:var(--text)}
+.skill-bar-track{width:90px;height:3px;background:rgba(22,32,50,0.1);border-radius:2px}
+.skill-bar-fill{height:3px;border-radius:2px;background:var(--navy)}
+.certs{margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--border-c)}
+.certs h4{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:500}
+.cert-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border-c)}
+.cert-item:last-child{border-bottom:none}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px}
+.cert-name{font-size:12px;color:var(--text);line-height:1.4}
+.cert-org{font-size:11px;color:var(--muted)}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.proj-card{background:#fff;border:1px solid var(--border-c);border-radius:8px;padding:2rem;border-top:3px solid var(--navy);transition:border-top-color 0.2s,transform 0.2s}
+.proj-card:hover{border-top-color:var(--gold);transform:translateY(-3px)}
+.proj-card.featured{grid-column:1/-1;border-top:3px solid var(--gold)}
+.proj-cat{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;font-weight:500}
+.proj-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:0.6rem;color:var(--navy);line-height:1.3}
+.proj-link{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;margin-bottom:1rem;display:block;letter-spacing:0.5px}
+.proj-link:hover{color:var(--gold)}
+.proj-card p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:1.25rem}
+.proj-bullets{margin-bottom:1.25rem;padding-left:0;list-style:none}
+.proj-bullets li{font-size:13px;color:var(--muted);padding:4px 0 4px 16px;position:relative;line-height:1.5}
+.proj-bullets li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:11px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;padding:3px 9px;border-radius:3px;background:var(--cream);color:var(--navy);border:1px solid var(--border-c)}
+
+/* EXPERIENCE TIMELINE */
+.exp-bg{background:var(--cream)}
+.timeline{max-width:720px}
+.tl-item{display:grid;grid-template-columns:120px 1fr;gap:2rem;padding-bottom:3rem;position:relative}
+.tl-item:not(:last-child)::after{content:'';position:absolute;left:120px;top:10px;bottom:0;width:1px;background:var(--border-c);margin-left:2rem}
+.tl-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);text-align:right;padding-top:3px;line-height:1.5}
+.tl-body{padding-left:2.5rem;position:relative}
+.tl-body::before{content:'';position:absolute;left:-1px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--navy);border:2px solid var(--cream)}
+.tl-role{font-weight:500;font-size:15px;color:var(--navy);margin-bottom:2px}
+.tl-company{font-family:'DM Mono',monospace;font-size:12px;color:var(--gold);margin-bottom:0.75rem;letter-spacing:0.5px}
+.tl-bullets{list-style:none;padding:0;margin-bottom:0.85rem}
+.tl-bullets li{font-size:13px;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.6}
+.tl-bullets li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:11px;top:6px}
+.tl-badges{display:flex;flex-wrap:wrap;gap:6px}
+.tl-badge{font-size:11px;padding:3px 9px;background:var(--navy);color:rgba(255,255,255,0.65);border-radius:3px}
+
+/* CONTACT */
+.contact-section{background:var(--navy);padding:5rem 3rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-left h2{font-family:'Playfair Display',serif;color:#fff;margin-bottom:1rem}
+.contact-left p{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:2.5rem;font-weight:300;line-height:1.75}
+.contact-details{display:flex;flex-direction:column;gap:0}
+.c-row{display:flex;align-items:center;gap:0;border-bottom:1px solid rgba(255,255,255,0.07);padding:1rem 0}
+.c-row:first-child{border-top:1px solid rgba(255,255,255,0.07)}
+.c-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);width:90px;flex-shrink:0}
+.c-val{font-size:13px;color:rgba(255,255,255,0.75);text-decoration:none;transition:color 0.2s}
+a.c-val:hover{color:var(--gold-light)}
+.contact-right{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:2.25rem}
+.contact-right h3{color:#fff;font-size:15px;margin-bottom:1.75rem;font-weight:500;font-family:'Playfair Display',serif}
+.f-row{margin-bottom:1.25rem}
+.f-row label{display:block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:7px}
+.f-row input,.f-row textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;color:#fff;padding:10px 13px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s}
+.f-row input:focus,.f-row textarea:focus{border-color:rgba(255,255,255,0.3)}
+.f-row textarea{height:90px;resize:none}
+
+footer{background:var(--navy-light);border-top:1px solid rgba(255,255,255,0.05);text-align:center;padding:1.5rem;font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:1.5px}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding:5rem 1.5rem 0}
+  .hero-right{display:none}
+  .stats-strip{grid-template-columns:repeat(2,1fr)}
+  section{padding:3.5rem 1.5rem}
+  .skills-layout,.projects-grid,.contact-grid{grid-template-columns:1fr}
+  .proj-card.featured{grid-column:auto}
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1.5rem}
+  .stats-strip{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Muhammad <span>Arslan</span> Mehmood</div>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="avail-dot"></div>
+      <span class="eyebrow-text">Open to new opportunities · Islamabad, Pakistan</span>
+    </div>
+    <h1>Quality assurance<br>for the <em>Web3</em> &amp;<br>AI era.</h1>
+    <p class="hero-sub">QA Engineer with nearly 3 years of experience in Web, Mobile, Blockchain, and AI-driven applications. I find the bugs before your users do — and I reduce the ones that reach production by up to 70%.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-gold">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-contact-row">
+      <a href="mailto:arslan6589@gmail.com" class="h-contact">arslan6589@gmail.com</a>
+      <a href="https://linkedin.com/in/arslan1997" class="h-contact" target="_blank">linkedin.com/in/arslan1997</a>
+      <span class="h-contact">+92 318-0908703</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card-stack">
+      <div class="hcard">
+        <div class="hcard-label">Current</div>
+        <div class="hcard-val"><strong>QA Engineer</strong>Funavry Technologies (ChainGPT)</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-label">Experience</div>
+        <div class="hcard-val"><strong>~3 Years</strong>Web · Mobile · Blockchain · AI</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-label">Speciality</div>
+        <div class="hcard-val"><strong>Web3 & DeFi QA</strong>Smart contracts, wallets, DApps</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-label">Education</div>
+        <div class="hcard-val"><strong>BSCS</strong>Federal Urdu University, Islamabad</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-label">Certs</div>
+        <div class="hcard-val"><strong>5 Certifications</strong>Selenium · Postman · JMeter · Agile</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <span class="stat-n">3+</span>
+    <span class="stat-l">Years Experience</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-n">800+</span>
+    <span class="stat-l">Test Cases Written</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-n">70%</span>
+    <span class="stat-l">Defect Reduction</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-n">95%+</span>
+    <span class="stat-l">Feature Coverage</span>
+  </div>
+</div>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-header">
+    <span class="section-tag">Areas of Expertise</span>
+    <span class="section-rule"></span>
+  </div>
+  <div class="expertise-grid">
+    <div class="exp-card">
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+      </div>
+      <h3>Manual & Exploratory Testing</h3>
+      <p>Regression, smoke, sanity, UAT, functional &amp; non-functional testing across complex systems.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      </div>
+      <h3>API & Integration Testing</h3>
+      <p>RESTful API validation, third-party integrations, Postman collections, and Newman automation.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+      </div>
+      <h3>Blockchain & Web3 QA</h3>
+      <p>Smart contract validation, DeFi flows, wallet integrations, vesting &amp; staking portal testing.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 10h18M3 14h18M10 3v18M14 3v18M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6z"/></svg>
+      </div>
+      <h3>Payment Systems Testing</h3>
+      <p>Stripe, Google Pay, and crypto payment validation for secure and accurate transaction processing.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+      </div>
+      <h3>Mobile & Cross-Platform</h3>
+      <p>iOS and Android testing, browser compatibility across Chrome, Brave, and Safari.</p>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+      </div>
+      <h3>Performance Testing</h3>
+      <p>Load and stress testing using JMeter to identify bottlenecks and ensure system stability under load.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-bg" id="skills">
+  <div class="section-header">
+    <span class="section-tag">Skills & Tools</span>
+    <span class="section-rule"></span>
+  </div>
+  <div class="skills-layout">
+    <div>
+      <div class="skill-group">
+        <h4>Core Testing Skills</h4>
+        <div class="skill-row"><span class="skill-name">Manual / Exploratory Testing</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">API Testing (Postman)</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Blockchain / Web3 QA</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Mobile Testing</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Performance Testing (JMeter)</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Automation (Selenium)</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+      </div>
+      <div class="skill-group" style="margin-top:2rem">
+        <h4>Tools & Platforms</h4>
+        <div class="skill-row"><span class="skill-name">Jira / Azure DevOps / Trello</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Postman / Newman</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Git / GitHub</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Selenium WebDriver (Java)</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Figma (Design Review)</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group">
+        <h4>Domain Knowledge</h4>
+        <div class="skill-row"><span class="skill-name">Blockchain / DeFi / DApps</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Payment Gateways</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">E-Commerce Platforms</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">MERN Stack Applications</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Agile / Scrum</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">AI-Driven Applications</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+      </div>
+      <div class="certs">
+        <h4>Certifications</h4>
+        <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Automation Testing with Selenium</div><div class="cert-org">10Pearls University</div></div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">API Testing with Postman</div><div class="cert-org">10Pearls University</div></div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">API Testing and JMeter Basics</div><div class="cert-org">10Pearls University</div></div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Software Testing Foundations</div><div class="cert-org">LinkedIn Learning</div></div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Understanding Agile and Scrum</div><div class="cert-org">10Pearls University</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-tag">Key Projects</span>
+    <span class="section-rule"></span>
+  </div>
+  <div class="projects-grid">
+    <div class="proj-card featured">
+      <div class="proj-cat">Blockchain & AI Platform · Web3 Ecosystem</div>
+      <h3>ChainGPT Ecosystem</h3>
+      <a href="https://chaingpt.org" class="proj-link" target="_blank">chaingpt.org</a>
+      <p>Led end-to-end QA for a comprehensive Web3 ecosystem combining AI-driven tools and decentralized finance modules. Achieved a 40% reduction in customer-reported defects through strategic regression planning and cross-functional collaboration.</p>
+      <ul class="proj-bullets">
+        <li>AI Hub & Main Platform: Managed 200+ issues across AI features, ensuring robust mainnet releases for a global user base.</li>
+        <li>IDO Launchpad (Whitelabel): Validated token sale workflows, smart contract interactions, whitelisting logic, vesting schedules, and multi-channel payment integrations (Stripe, Google Pay, Crypto).</li>
+        <li>Vesting & Staking Portal: Rigorous on-chain verification and database validation ensuring 100% accuracy in token lock/unlock logic and distribution.</li>
+        <li>Cross-platform testing across Chrome, Brave, and Safari on multiple mobile devices.</li>
+      </ul>
+      <div class="proj-tags"><span class="tag">Blockchain</span><span class="tag">Smart Contracts</span><span class="tag">AI Testing</span><span class="tag">Postman</span><span class="tag">Selenium</span><span class="tag">Stripe</span><span class="tag">Crypto Wallets</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-cat">CRM · Functional & API Testing</div>
+      <h3>ALXTEL Console CRM</h3>
+      <p>Performed functional, UI, and API testing across CRM modules including User Management, Ticketing, and Reporting. Validated third-party integrations and maintained comprehensive sprint QA reports throughout the delivery lifecycle.</p>
+      <div class="proj-tags"><span class="tag">Manual Testing</span><span class="tag">API Testing</span><span class="tag">UI/UX</span><span class="tag">Jira</span><span class="tag">CRM</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-cat">Web & Mobile · Agile QA</div>
+      <h3>PHP & MERN Stack Applications</h3>
+      <p>Authored and executed 500+ structured test cases for web and mobile applications at Aiztek Technology. Automated repetitive regression scenarios, saving 25% of manual QA effort while ensuring zero blocker issues at release.</p>
+      <div class="proj-tags"><span class="tag">Manual Testing</span><span class="tag">Regression</span><span class="tag">MERN</span><span class="tag">PHP/Laravel</span><span class="tag">Automation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp-bg" id="experience">
+  <div class="section-header">
+    <span class="section-tag">Professional Experience</span>
+    <span class="section-rule"></span>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Aug 2024<br>— Present</div>
+      <div class="tl-body">
+        <div class="tl-role">Quality Assurance Engineer</div>
+        <div class="tl-company">Funavry Technologies (ChainGPT)</div>
+        <ul class="tl-bullets">
+          <li>Designed and executed 300+ detailed test cases per sprint, achieving over 95% feature coverage.</li>
+          <li>Led QA for blockchain and AI-based modules, ensuring smart contract integrity and AI prediction accuracy.</li>
+          <li>Reduced post-release defects by 70% through proactive regression and smoke testing.</li>
+          <li>Validated Stripe, Google Pay, and crypto payment integrations for accurate, secure transaction processing.</li>
+          <li>Conducted build validation, release readiness checks, and sprint-level QA sign-offs.</li>
+        </ul>
+        <div class="tl-badges"><span class="tl-badge">Blockchain QA</span><span class="tl-badge">AI Testing</span><span class="tl-badge">Selenium</span><span class="tl-badge">Postman</span><span class="tl-badge">Agile</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Dec 2022<br>— Jul 2024</div>
+      <div class="tl-body">
+        <div class="tl-role">Associate SQA Engineer</div>
+        <div class="tl-company">Aiztek Technology</div>
+        <ul class="tl-bullets">
+          <li>Authored and executed 500+ structured test cases for web and mobile applications.</li>
+          <li>Automated repetitive regression scenarios, saving 25% of manual QA effort.</li>
+          <li>Validated REST APIs and payment integrations including Stripe, Google Pay, and crypto transactions.</li>
+          <li>Tested PHP-based and MERN applications, ensuring performance and functional reliability.</li>
+          <li>Maintained zero blocker issues at release and detailed defect tracking in Jira.</li>
+        </ul>
+        <div class="tl-badges"><span class="tl-badge">Manual Testing</span><span class="tl-badge">API Testing</span><span class="tl-badge">Mobile QA</span><span class="tl-badge">MERN</span><span class="tl-badge">Jira</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2017 – 2022</div>
+      <div class="tl-body">
+        <div class="tl-role">Bachelor of Science in Computer Science</div>
+        <div class="tl-company">Federal Urdu University of Arts, Science & Technology, Islamabad</div>
+        <ul class="tl-bullets">
+          <li>Strong foundation in software engineering, systems design, and programming.</li>
+          <li>Pursued QA specialization and earned 5 professional certifications post-graduation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h2>Let's work together.</h2>
+      <p>I'm open to new QA roles across Web, Mobile, or Web3 domains. Whether you need a detail-obsessed tester or someone to build QA processes from the ground up — let's talk.</p>
+      <div class="contact-details">
+        <div class="c-row"><span class="c-label">Email</span><a href="mailto:arslan6589@gmail.com" class="c-val">arslan6589@gmail.com</a></div>
+        <div class="c-row"><span class="c-label">Phone</span><span class="c-val">+92 318-0908703</span></div>
+        <div class="c-row"><span class="c-label">LinkedIn</span><a href="https://linkedin.com/in/arslan1997" class="c-val" target="_blank">linkedin.com/in/arslan1997</a></div>
+        <div class="c-row"><span class="c-label">Location</span><span class="c-val">Islamabad, Pakistan</span></div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h3>Send a message</h3>
+      <div class="f-row"><label>Your Name</label><input type="text" placeholder="Full name"></div>
+      <div class="f-row"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="f-row"><label>Message</label><textarea placeholder="Tell me about the opportunity..."></textarea></div>
+      <a href="mailto:arslan6589@gmail.com" class="btn-gold" style="margin-top:0.5rem">Send Message</a>
+    </div>
+  </div>
+</section>
+
+<footer>Muhammad Arslan Mehmood &nbsp;·&nbsp; QA Engineer &nbsp;·&nbsp; Islamabad, Pakistan &nbsp;·&nbsp; 2025</footer>
+
+</body>
+</html>
