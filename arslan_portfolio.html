@@ -442,15 +442,100 @@ footer{background:var(--navy-light);border-top:1px solid rgba(255,255,255,0.05);
     </div>
     <div class="contact-right">
       <h3>Send a message</h3>
-      <div class="f-row"><label>Your Name</label><input type="text" placeholder="Full name"></div>
-      <div class="f-row"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-      <div class="f-row"><label>Message</label><textarea placeholder="Tell me about the opportunity..."></textarea></div>
-      <a href="mailto:arslan6589@gmail.com" class="btn-gold" style="margin-top:0.5rem">Send Message</a>
+      <form id="contact-form" novalidate>
+        <div class="f-row">
+          <label for="from_name">Your Name</label>
+          <input type="text" id="from_name" name="from_name" placeholder="Full name" required>
+          <span class="f-error" id="err-name"></span>
+        </div>
+        <div class="f-row">
+          <label for="reply_to">Email</label>
+          <input type="email" id="reply_to" name="reply_to" placeholder="your@email.com" required>
+          <span class="f-error" id="err-email"></span>
+        </div>
+        <div class="f-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me about the opportunity..." required></textarea>
+          <span class="f-error" id="err-msg"></span>
+        </div>
+        <button type="submit" class="btn-gold" id="submit-btn" style="margin-top:0.5rem;width:100%;font-family:'DM Sans',sans-serif;font-size:13px">
+          <span id="btn-text">Send Message</span>
+        </button>
+        <div id="form-success" style="display:none;margin-top:1rem;padding:12px 14px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);border-radius:5px;font-size:13px;color:#4ade80">
+          Message sent successfully! I'll get back to you soon.
+        </div>
+        <div id="form-error" style="display:none;margin-top:1rem;padding:12px 14px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.25);border-radius:5px;font-size:13px;color:#f87171">
+          Something went wrong. Please email me directly at arslan6589@gmail.com
+        </div>
+      </form>
     </div>
   </div>
 </section>
 
 <footer>Muhammad Arslan Mehmood &nbsp;·&nbsp; QA Engineer &nbsp;·&nbsp; Islamabad, Pakistan &nbsp;·&nbsp; 2025</footer>
+
+<style>
+.f-error{display:block;font-size:11px;color:#f87171;margin-top:4px;min-height:16px;font-family:'DM Mono',monospace;letter-spacing:0.5px}
+#submit-btn:disabled{opacity:0.6;cursor:not-allowed}
+</style>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+(function(){
+  /* ─── STEP 1: Replace these three values from your EmailJS dashboard ─── */
+  var PUBLIC_KEY    = 'YOUR_PUBLIC_KEY';    // Account > API Keys
+  var SERVICE_ID    = 'YOUR_SERVICE_ID';    // Email Services tab
+  var TEMPLATE_ID   = 'YOUR_TEMPLATE_ID';  // Email Templates tab
+  /* ──────────────────────────────────────────────────────────────────── */
+
+  emailjs.init({ publicKey: PUBLIC_KEY });
+
+  var form      = document.getElementById('contact-form');
+  var btnText   = document.getElementById('btn-text');
+  var submitBtn = document.getElementById('submit-btn');
+  var success   = document.getElementById('form-success');
+  var errBox    = document.getElementById('form-error');
+
+  function validate() {
+    var ok = true;
+    var name  = document.getElementById('from_name').value.trim();
+    var email = document.getElementById('reply_to').value.trim();
+    var msg   = document.getElementById('message').value.trim();
+
+    document.getElementById('err-name').textContent  = name  ? '' : 'Name is required.';
+    document.getElementById('err-email').textContent = email ? (/.+@.+\..+/.test(email) ? '' : 'Enter a valid email.') : 'Email is required.';
+    document.getElementById('err-msg').textContent   = msg   ? '' : 'Please write a message.';
+
+    if (!name || !email || !/.+@.+\..+/.test(email) || !msg) ok = false;
+    return ok;
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    success.style.display = 'none';
+    errBox.style.display  = 'none';
+
+    if (!validate()) return;
+
+    submitBtn.disabled = true;
+    btnText.textContent = 'Sending…';
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
+      .then(function() {
+        btnText.textContent    = 'Send Message';
+        submitBtn.disabled     = false;
+        success.style.display  = 'block';
+        form.reset();
+      }, function(err) {
+        console.error('EmailJS error:', err);
+        btnText.textContent   = 'Send Message';
+        submitBtn.disabled    = false;
+        errBox.style.display  = 'block';
+      });
+  });
+})();
+</script>
 
 </body>
 </html>
